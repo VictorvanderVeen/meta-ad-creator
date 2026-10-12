@@ -1,0 +1,56 @@
+{
+  "id": "hamlin",
+  "name": "Hamlin Fistula Nederland",
+  "colors": {
+    "primary": "#00686F",
+    "primaryDeep": "#004F61",
+    "accent1": "#F5874D",
+    "accent2": "#00667F",
+    "accent3": "#71B16D",
+    "accent4": "#FBB034",
+    "cta": "#F5874D",
+    "text": "#3A3D3D",
+    "textLight": "#FFFFFF",
+    "headingColor": "#00667F",
+    "stampText": "#FFF4E6"
+  },
+  "band": ["#005A5F", "#98B5C3", "#30783E", "#CC850E", "#CEB083", "#971C16"],
+  "typography": {
+    "headingFont": "Open Sans",
+    "headingFallback": "'Open Sans', 'Helvetica Neue', Arial, sans-serif",
+    "headingWeight": "700",
+    "bodyFont": "Open Sans",
+    "bodyFallback": "'Open Sans', 'Helvetica Neue', Arial, sans-serif",
+    "bodyWeight": "400",
+    "ctaFont": "Open Sans",
+    "ctaFallback": "'Open Sans', 'Helvetica Neue', Arial, sans-serif",
+    "ctaWeight": "800",
+    "stampFont": "Stardos Stencil",
+    "stampFallback": "'Stardos Stencil', 'Open Sans', Impact, sans-serif",
+    "stampWeight": "700"
+  },
+  "logo": {
+    "url": "",
+    "urlWhite": "",
+    "position": "top-left",
+    "maxHeight": 60
+  },
+  "layout": {
+    "headingMaxLines": 4,
+    "headingFontSizeRange": [32, 68],
+    "ctaStyle": "button",
+    "padding": 56
+  },
+  "templates": ["hamlin-label", "hamlin-stempel", "foto-overlay", "bold-text", "foto-split"],
+  "rules": [
+    "Sitekleuren overgenomen uit de CSS van hamlinfistula.nl: Hamlin-blauw #00686F / #00667F, donkerblauw #004F61, doneer-groen #71B16D, geel #FBB034",
+    "Oranje (#F5874D) en de zes bandkleuren zijn gemeten in de aangeleverde voorbeeldads, niet uit een officiële brandguide — nog te bevestigen",
+    "Elke ad heeft bovenaan de geweven kleurenband (6 vlakken); in de tool is dat een vlakke benadering, de echte band heeft een weefstructuur",
+    "Foto altijd beeldvullend, geen donkere overlay. Tekst staat in een oranje label met ronde hoeken (wit, Open Sans bold)",
+    "Label-sjabloon: kop = regel in het label, CTA-tekst = de grote regel (bv. €40). Subtekst wordt niet getoond: het label wordt er te groot van",
+    "Stempel-sjabloon: alleen de kop, in hoofdletters stencil (bv. URGENT). Het stencil-font is een benadering (Stardos Stencil)",
+    "Geen logo en geen URL op het beeld",
+    "Online altijd je-vorm",
+    "Genet is al geholpen: de gift gaat naar de volgende vrouw. Het pakket is een eerste stap, geen genezing beloven"
+  ]
+}

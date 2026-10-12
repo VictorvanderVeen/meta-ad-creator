@@ -1,0 +1,49 @@
+{
+  "id": "follow-this",
+  "name": "Follow This",
+  "colors": {
+    "primary": "#6FEF48",
+    "primaryDeep": "#000000",
+    "accent1": "#A34FC0",
+    "accent2": "#469DE8",
+    "accent3": "#000000",
+    "accent4": "#FFFFFF",
+    "cta": "#6FEF48",
+    "text": "#000000",
+    "textLight": "#FFFFFF",
+    "headingColor": "#000000"
+  },
+  "typography": {
+    "headingFont": "Open Sans",
+    "headingFallback": "'Open Sans', sans-serif",
+    "headingWeight": "700",
+    "bodyFont": "Open Sans",
+    "bodyFallback": "'Open Sans', sans-serif",
+    "bodyWeight": "400",
+    "ctaFont": "Open Sans",
+    "ctaFallback": "'Open Sans', sans-serif",
+    "ctaWeight": "700"
+  },
+  "logo": {
+    "url": "/brands/follow-this/logo.png",
+    "urlWhite": "/brands/follow-this/logo-white.png",
+    "position": "top-left",
+    "maxHeight": 90
+  },
+  "arrow": {
+    "url": "/brands/follow-this/arrow.png"
+  },
+  "layout": {
+    "headingMaxLines": 4,
+    "headingFontSizeRange": [32, 72],
+    "ctaStyle": "button",
+    "padding": 48
+  },
+  "templates": ["bold-text", "foto-overlay", "foto-split", "statement"],
+  "rules": [
+    "Basis is een sterk contrast tussen zwart en wit; groen (#6FEF48) is de hoofdaccent voor emphasis",
+    "Blauw (#469DE8) en paars (#A34FC0) zijn support-kleuren, gebruik ze in minder dan 30% van de uitingen",
+    "Font is Open Sans voor alle tekst; koppen in bold capitals",
+    "De pijl is een statement of intent — nooit decoratief, altijd gericht"
+  ]
+}

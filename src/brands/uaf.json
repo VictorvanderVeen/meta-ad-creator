@@ -1,0 +1,51 @@
+{
+  "id": "uaf",
+  "name": "UAF",
+  "colors": {
+    "primary": "#6D008B",
+    "primaryDeep": "#5A0073",
+    "accent1": "#AFCA0B",
+    "accent2": "#EE7BAE",
+    "accent3": "#78B7E5",
+    "accent4": "#009741",
+    "cta": "#F8AC00",
+    "text": "#000000",
+    "textLight": "#FFFFFF",
+    "headingColor": "#6D008B"
+  },
+  "typography": {
+    "headingFont": "Gotham Bold",
+    "headingFallback": "'Montserrat', sans-serif",
+    "headingWeight": "800",
+    "bodyFont": "Gotham Light",
+    "bodyFallback": "'Montserrat', sans-serif",
+    "bodyWeight": "300",
+    "ctaFont": "Gotham Bold",
+    "ctaFallback": "'Montserrat', sans-serif",
+    "ctaWeight": "700"
+  },
+  "logo": {
+    "url": "/brands/uaf/logo.png",
+    "urlWhite": "/brands/uaf/logo-white.png",
+    "position": "top-right",
+    "maxHeight": 80
+  },
+  "layout": {
+    "headingMaxLines": 4,
+    "headingFontSizeRange": [32, 72],
+    "ctaStyle": "button",
+    "padding": 48
+  },
+  "templates": ["bold-text", "foto-overlay", "foto-split"],
+  "rules": [
+    "Koppen altijd in primary color (paars)",
+    "CTA altijd in cta color (oranje)",
+    "Tweede regel van kop mag accent1, accent2 of accent3 zijn",
+    "Alleen accent3 (blauw) mag als tint (20/40/60%)",
+    "Body tekst altijd zwart",
+    "Geen witte tekst op lichte achtergrond",
+    "Min. 15pt tekst op gekleurde achtergrond",
+    "Tekst altijd links uitgelijnd",
+    "Dieper paars op gekleurde achtergrond"
+  ]
+}

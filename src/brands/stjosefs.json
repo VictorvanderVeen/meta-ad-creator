@@ -1,0 +1,52 @@
+{
+  "id": "stjosefs",
+  "name": "St. Josefs Indianer Hilfswerk",
+  "colors": {
+    "primary": "#004996",
+    "primaryDeep": "#00305E",
+    "accent1": "#FED52A",
+    "accent2": "#FD354E",
+    "accent3": "#f6f0da",
+    "accent4": "#282828",
+    "cta": "#FD354E",
+    "text": "#282828",
+    "textLight": "#FFFFFF",
+    "headingColor": "#282828"
+  },
+  "typography": {
+    "headingFont": "Caecilia 85 Heavy",
+    "headingFallback": "'Roboto Slab', Georgia, serif",
+    "headingWeight": "800",
+    "bodyFont": "Caecilia 55 Roman",
+    "bodyFallback": "'Roboto Slab', Georgia, serif",
+    "bodyWeight": "400",
+    "ctaFont": "Caecilia 85 Heavy",
+    "ctaFallback": "'Roboto Slab', Georgia, serif",
+    "ctaWeight": "700"
+  },
+  "logo": {
+    "url": "/brands/stjosefs/logo.png",
+    "urlWhite": "",
+    "position": "top-left",
+    "maxHeight": 80
+  },
+  "layout": {
+    "headingMaxLines": 4,
+    "headingFontSizeRange": [32, 72],
+    "ctaStyle": "button",
+    "padding": 48
+  },
+  "templates": ["bold-text", "foto-overlay", "foto-split"],
+  "rules": [
+    "Kernkleuren (brandbook p.46, bevestigd tegen p.34 CMYK-logo): blauw #004996, rood #FD354E, geel #FED52A, zwart #282828, zandwit #f6f0da (achtergrondtint)",
+    "Op de live site (stjosefs.de) staat de kop wit-bold op een blauw vlak, met daaronder een los rood CTA-blok met wit chevron-teken '»' vóór de knoptekst (bv. '» Sie können etwas dagegen tun') — dit is het canonieke foto-overlay-patroon voor deze klant",
+    "Logo altijd met gekartelde/zig-zag rand tonen (postzegel-look), linksboven; logo nooit wit/knocked-out weergeven — op donkere achtergrond het zwarte logo gebruiken (brandbook p.34, p.42)",
+    "Caecilia (kop + body) en Bradley Hand Bold (handgeschreven accenten) zijn de officiële fonts (brandbook p.46), maar niet vrij als webfont beschikbaar — vervangen door Roboto Slab als vergelijkbare slab-serif fallback",
+    "Woordkeuze positief/kleurrijk: colorful, proud, safe, secure, respect, empowerment, caring, protective, transformational, lifechanging, future — tegenover donker/grijs: dark, afraid, unsafe, disadvantaged, gray (brandbook p.30)",
+    "Lakota-waarden voor verdieping in copy: dignity, respect, wisdom, kinship, warmth, growth, fortitude, generosity, faith, pride, kindness (brandbook p.30)",
+    "Kernpropositie: 'St. Joseph's Indian School colors the lives of disadvantaged Lakota children' — contrast cycle of poverty (grijs/donker beeld) versus colorful opportunities (kleurrijk beeld) (brandbook p.12-19)",
+    "Doelgroep: vrouw 55-75 jaar in Duitsland, zorgzaam, natuur/dieren, gevoelig voor kinderwelzijn en respect voor Lakota-cultuur (brandbook p.22-23)",
+    "Respectvolle taal: spreek over Lakota/Native Americans met respect, nadruk op trots op eigen cultuur — nooit stereotiep of alleen als slachtoffer neerzetten (brandbook p.17, p.30)",
+    "Beeldgebruik: bij fundraising/urgentie-ads kinderen tonen die hulp nodig hebben of neutraal kijken; bij thanking-ads lachende kinderen in actie (brandbook p.38-39)"
+  ]
+}

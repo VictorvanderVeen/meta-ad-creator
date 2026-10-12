@@ -1,0 +1,49 @@
+{
+  "id": "takecarebnb",
+  "name": "Take Care BNB",
+  "colors": {
+    "primary": "#D6E75A",
+    "primaryDeep": "#173330",
+    "accent1": "#D6E75A",
+    "accent2": "#173330",
+    "accent3": "#FFFFFF",
+    "accent4": "#173330",
+    "cta": "#D6E75A",
+    "text": "#173330",
+    "textLight": "#FFFFFF",
+    "headingColor": "#173330"
+  },
+  "typography": {
+    "headingFont": "Inter",
+    "headingFallback": "'Inter', 'Helvetica Neue', Arial, sans-serif",
+    "headingWeight": "700",
+    "bodyFont": "Inter",
+    "bodyFallback": "'Inter', 'Helvetica Neue', Arial, sans-serif",
+    "bodyWeight": "400",
+    "ctaFont": "Inter",
+    "ctaFallback": "'Inter', 'Helvetica Neue', Arial, sans-serif",
+    "ctaWeight": "700"
+  },
+  "logo": {
+    "url": "",
+    "urlWhite": "",
+    "text": "takecarebnb",
+    "position": "bottom-left",
+    "maxHeight": 40
+  },
+  "layout": {
+    "headingMaxLines": 4,
+    "headingFontSizeRange": [32, 72],
+    "ctaStyle": "text",
+    "padding": 56
+  },
+  "templates": ["flat-statement", "photo-highlight"],
+  "rules": [
+    "PROEFCONFIG voor de pitch — kleuren en font zijn ingeschat op basis van 3 screenshots, nog niet geverifieerd tegen een officieel brandbook",
+    "Lime (#D6E75A) is de hoofdaccent: vlakvulling op flat ads én highlight-kleur voor het kernwoord in een kop op een foto",
+    "Diepe petrolgroen (#173330) is de tekstkleur op de lime achtergrond",
+    "Op foto's: witte kop met 1 gemarkeerd kernwoord in lime (schrijf dat woord tussen ** in het kopveld, bv. 'Neem een **wereldburger** in huis')",
+    "Geen knoppen — CTA/link is losse tekst, geen kleurvlak",
+    "Wordmark 'takecarebnb' in lowercase bold, er is nog geen apart beeldmerk-bestand aangeleverd"
+  ]
+}

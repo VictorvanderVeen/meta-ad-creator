@@ -1,0 +1,52 @@
+{
+  "id": "lezen-schrijven",
+  "showcaseSlug": "lezenenschrijven",
+  "name": "Lezen & Schrijven",
+  "colors": {
+    "primary": "#ad9150",
+    "primaryDeep": "#8a7440",
+    "accent1": "#eeb7be",
+    "accent2": "#49b080",
+    "accent3": "#d28b5e",
+    "accent4": "#6b7db8",
+    "cta": "#ad9150",
+    "text": "#000000",
+    "textLight": "#FFFFFF",
+    "headingColor": "#000000",
+    "background": "#f4f0e6"
+  },
+  "typography": {
+    "headingFont": "Helvetica Neue",
+    "headingFallback": "'Helvetica', 'Arial', sans-serif",
+    "headingWeight": "700",
+    "bodyFont": "Helvetica Neue",
+    "bodyFallback": "'Helvetica', 'Arial', sans-serif",
+    "bodyWeight": "400",
+    "ctaFont": "Helvetica Neue",
+    "ctaFallback": "'Helvetica', 'Arial', sans-serif",
+    "ctaWeight": "700"
+  },
+  "logo": {
+    "url": "/brands/lezen-schrijven/logo.svg",
+    "urlWhite": "/brands/lezen-schrijven/logo-white.svg",
+    "position": "top-left",
+    "maxHeight": 75
+  },
+  "layout": {
+    "headingMaxLines": 4,
+    "headingFontSizeRange": [32, 72],
+    "ctaStyle": "button",
+    "padding": 48
+  },
+  "templates": ["bold-text", "foto-overlay", "foto-split"],
+  "rules": [
+    "Koppen in zwart of okergeel (#ad9150)",
+    "Tekst altijd links uitgelijnd",
+    "Ondertitel altijd kleiner dan hoofdkop",
+    "Warmroze (#eeb7be) alleen als achtergrond, niet als tekst op wit",
+    "Min. contrast 4.5:1 (AAA) of 3:1 voor grote tekst (AA)",
+    "Okergeel op wit alleen voor tekst >= 18pt of 14pt bold",
+    "Geen woordafbrekingen in koppen",
+    "Logo altijd op egale ondergrond, nooit op foto"
+  ]
+}

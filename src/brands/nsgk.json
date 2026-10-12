@@ -1,0 +1,49 @@
+{
+  "id": "nsgk",
+  "showcaseSlug": "gehandicaptekind",
+  "name": "Stichting het Gehandicapte Kind",
+  "colors": {
+    "primary": "#009640",
+    "primaryDeep": "#00722F",
+    "accent1": "#F9B000",
+    "accent2": "#E5231B",
+    "accent3": "#5BC5F2",
+    "accent4": "#4D4D4D",
+    "cta": "#E5231B",
+    "text": "#000000",
+    "textLight": "#FFFFFF",
+    "headingColor": "#000000"
+  },
+  "typography": {
+    "headingFont": "Rubik",
+    "headingFallback": "'Rubik', 'Helvetica Neue', Arial, sans-serif",
+    "headingWeight": "700",
+    "bodyFont": "Rubik",
+    "bodyFallback": "'Rubik', 'Helvetica Neue', Arial, sans-serif",
+    "bodyWeight": "400",
+    "ctaFont": "Rubik",
+    "ctaFallback": "'Rubik', 'Helvetica Neue', Arial, sans-serif",
+    "ctaWeight": "700"
+  },
+  "logo": {
+    "url": "/brands/nsgk/logo.png",
+    "urlWhite": "/brands/nsgk/logo-white.png",
+    "position": "top-left",
+    "maxHeight": 70
+  },
+  "layout": {
+    "headingMaxLines": 4,
+    "headingFontSizeRange": [32, 68],
+    "ctaStyle": "button",
+    "padding": 48
+  },
+  "templates": ["bold-text", "foto-overlay", "foto-split"],
+  "rules": [
+    "Kleuren geverifieerd tegen de officiële brandguide: groen #009640 (PMS 347 C/U), oranje #F9B000 (PMS 130 C/U), rood #E5231B (PMS 185 C/U), blauw #5BC5F2 (PMS 637 C/U)",
+    "Brandguide toont ook 50%/10%-tints van het blauw als voorbeeld — vermoedelijk gelden dezelfde tint-percentages voor de andere kleuren, nog te bevestigen",
+    "In hun eigen Meta-ads staat de kop altijd wit-bold, overlay op een gekleurde band onderaan de foto/video (rood, groen of blauw naargelang de ad) — komt overeen met de bestaande 'Foto Overlay'-template",
+    "CTA in hun eigen ads is de standaard Meta-knop (Donate Now / Learn more), geen custom knopontwerp",
+    "Font is Rubik (brandguide p.15), geladen via Google Fonts",
+    "Logo-bestand ontbreekt nog (public/brands/nsgk/logo.png + logo-white.png) — voeg toe zodra de PNG's beschikbaar zijn, rendert tot die tijd gewoon zonder logo"
+  ]
+}

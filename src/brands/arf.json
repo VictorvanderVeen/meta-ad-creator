@@ -1,0 +1,47 @@
+{
+  "id": "arf",
+  "name": "Attrape-Rêves International",
+  "colors": {
+    "primary": "#A6453A",
+    "primaryDeep": "#7A2F27",
+    "accent1": "#F2B705",
+    "accent2": "#2E6E4E",
+    "accent3": "#E8DCC8",
+    "accent4": "#282828",
+    "cta": "#A6453A",
+    "text": "#282828",
+    "textLight": "#FFFFFF",
+    "headingColor": "#282828"
+  },
+  "typography": {
+    "headingFont": "Montserrat",
+    "headingFallback": "'Montserrat', 'Helvetica Neue', Arial, sans-serif",
+    "headingWeight": "800",
+    "bodyFont": "Montserrat",
+    "bodyFallback": "'Montserrat', 'Helvetica Neue', Arial, sans-serif",
+    "bodyWeight": "400",
+    "ctaFont": "Montserrat",
+    "ctaFallback": "'Montserrat', 'Helvetica Neue', Arial, sans-serif",
+    "ctaWeight": "700"
+  },
+  "logo": {
+    "url": "/brands/arf/logo.png",
+    "urlWhite": "",
+    "position": "top-left",
+    "maxHeight": 70
+  },
+  "layout": {
+    "headingMaxLines": 4,
+    "headingFontSizeRange": [32, 68],
+    "ctaStyle": "button",
+    "padding": 48
+  },
+  "templates": ["bold-text", "foto-overlay", "foto-split"],
+  "rules": [
+    "GEEN officieel huisstijlhandboek beschikbaar (16-9-2026) — kleuren hieronder zijn geschat op basis van één live Meta-ad-screenshot ('Urgence eau potable'), niet geverifieerd tegen brandbook of CMYK-waarden. Bijwerken zodra er officiële kleurwaarden zijn.",
+    "In hun eigen Meta-ads staat de kop wit-bold, overlay op een bakstenen/terracotta-rode band onderaan de foto — komt overeen met de bestaande 'Foto Overlay'-template",
+    "CTA in hun eigen ads is de standaard Meta-knop (bv. 'Aidez maintenant!' / 'See details'), geen custom knopontwerp in de creative zelf",
+    "Taal: Frans (doelgroep Frankrijk, direct-mail-ondersteunende campagnes — zie project_attrape_reves_meta_mail)",
+    "Logo-bestand ontbreekt nog (public/brands/arf/logo.png) — voeg toe zodra beschikbaar, rendert tot die tijd gewoon zonder logo"
+  ]
+}
