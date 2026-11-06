@@ -1,0 +1,55 @@
+{
+  "id": "paz-holandesa",
+  "name": "PAZ Holandesa",
+  "colors": {
+    "primary": "#e31a22",
+    "primaryDeep": "#a8121a",
+    "accent1": "#30a32c",
+    "accent2": "#e31a22",
+    "accent3": "#f4f1ec",
+    "accent4": "#1f6f1c",
+    "cta": "#30a32c",
+    "text": "#2b2b2b",
+    "textLight": "#FFFFFF",
+    "headingColor": "#2b2b2b",
+    "ctaText": "#FFFFFF"
+  },
+  "typography": {
+    "headingFont": "Nunito Sans",
+    "headingFallback": "'Nunito Sans', Arial, sans-serif",
+    "headingWeight": "900",
+    "bodyFont": "Nunito Sans",
+    "bodyFallback": "'Nunito Sans', Arial, sans-serif",
+    "bodyWeight": "400",
+    "ctaFont": "Nunito Sans",
+    "ctaFallback": "'Nunito Sans', Arial, sans-serif",
+    "ctaWeight": "900"
+  },
+  "logo": {
+    "url": "/brands/paz-holandesa/logo.png",
+    "urlWhite": "",
+    "position": "top-left",
+    "maxHeight": 64
+  },
+  "layout": {
+    "headingMaxLines": 4,
+    "headingFontSizeRange": [
+      32,
+      64
+    ],
+    "ctaStyle": "button",
+    "padding": 48,
+    "splitRatio": 0.45
+  },
+  "templates": [
+    "foto-split",
+    "bold-text"
+  ],
+  "rules": [
+    "Kleuren gemeten uit het officiële logo (PAZH_RGB_logo_1line_Color.png): rood #e31a22, groen #30a32c",
+    "Klant (via Cynthia, 14-8-2026): GEEN tekst over de foto van Eithan, die overschaduwt hem — daarom alleen foto-split (tekst in eigen vlak) en bold-text",
+    "Alleen foto's van Eithan gebruiken; foto C (vrouw met kind) mogelijk ander kind, niet gebruiken zonder check",
+    "Font Nunito Sans is een keuze van Victor/Claude (site was niet te checken), niet uit een brandguide",
+    "Groen als CTA-kleur zodat de knop zich onderscheidt van het rode woordmerk"
+  ]
+}

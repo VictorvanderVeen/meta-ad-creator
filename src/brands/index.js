@@ -6,6 +6,8 @@ import nsgk from './nsgk.json';
 import stjosefs from './stjosefs.json';
 import arf from './arf.json';
 import hamlin from './hamlin.json';
+import vso from './vso.json';
+import pazHolandesa from './paz-holandesa.json';
 
 const brands = {
   uaf,
@@ -16,6 +18,8 @@ const brands = {
   stjosefs,
   arf,
   hamlin,
+  vso,
+  'paz-holandesa': pazHolandesa,
 };
 
 export function getBrand(id) {

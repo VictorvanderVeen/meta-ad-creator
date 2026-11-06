@@ -5,7 +5,7 @@
  *
  * Templates:
  *  - bold-text:    Big bold headline, white bg, colored band at bottom
- *  - foto-overlay: Full photo background with dark overlay, white text
+ *  - foto-overlay: Full photo background, white text on a dark scrim behind the copy
  *  - foto-split:   Photo bottom half, headline on white/colored top half
  */
 
@@ -82,7 +82,7 @@ function drawCTA(ctx, brand, ctaText, x, y, whiteText = false) {
   ctx.fillStyle = brand.colors.cta;
   drawRoundedRect(ctx, x, y, btnW, btnH, btnR);
 
-  ctx.fillStyle = whiteText ? '#FFFFFF' : brand.colors.text;
+  ctx.fillStyle = whiteText ? '#FFFFFF' : (brand.colors.ctaText || brand.colors.text);
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
   ctx.font = `${brand.typography.ctaWeight} ${fontSize}px ${brand.typography.ctaFallback}`;
@@ -276,15 +276,6 @@ async function renderFotoOverlay(canvas, ctx, brand, adData, options, W, H) {
     drawImageCover(ctx, options.adImage, 0, 0, W, H, adData.image_position_x ?? 0.5, adData.image_position_y ?? 0.5);
   }
 
-  // Dark overlay gradient
-  const gradient = ctx.createLinearGradient(0, 0, 0, H);
-  gradient.addColorStop(0, 'rgba(0, 0, 0, 0.7)');
-  gradient.addColorStop(0.35, 'rgba(0, 0, 0, 0.3)');
-  gradient.addColorStop(0.65, 'rgba(0, 0, 0, 0.2)');
-  gradient.addColorStop(1, 'rgba(0, 0, 0, 0.75)');
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, W, H);
-
   // Accent line at top
   ctx.fillStyle = accentColor || brand.colors.cta;
   ctx.fillRect(0, 0, W, s(6));
@@ -335,23 +326,28 @@ async function renderFotoOverlay(canvas, ctx, brand, adData, options, W, H) {
   // Position headline so entire block ends at maxContentBottom
   const headlineStartY = Math.max(safeTop + padding, maxContentBottom - totalContentH);
 
-  // Text scrim: the whole-image gradient above has a lighter band around the
-  // vertical middle (see the gradient stops), so longer subtext (more lines →
-  // taller block → headlineStartY pushed further up) can drift into that
-  // lighter zone and become unreadable. This second, content-height-aware
-  // gradient darkens exactly the area the text block occupies, regardless of
-  // how long the copy is.
-  const scrimTop = Math.max(0, headlineStartY - s(24));
+  // Text scrim: the photo itself stays undarkened. This content-height-aware
+  // gradient darkens only the area the text block occupies, so the white copy
+  // stays readable regardless of how long it is. On a light photo background
+  // the default is too faint: scrim_strength (e.g. 1.5) darkens it per ad.
+  const k = Number(adData.scrim_strength) || 1;
+  // A stronger scrim also starts higher, so the darkest part sits behind the headline
+  const scrimTop = Math.max(0, headlineStartY - s(24 + Math.max(0, k - 1) * 400));
   if (scrimTop < H) {
     const scrim = ctx.createLinearGradient(0, scrimTop, 0, H);
     scrim.addColorStop(0, 'rgba(0, 0, 0, 0)');
-    scrim.addColorStop(0.3, 'rgba(0, 0, 0, 0.55)');
-    scrim.addColorStop(1, 'rgba(0, 0, 0, 0.78)');
+    scrim.addColorStop(0.4, `rgba(0, 0, 0, ${Math.min(0.3 * k, 0.9)})`);
+    scrim.addColorStop(1, `rgba(0, 0, 0, ${Math.min(0.5 * k, 0.9)})`);
     ctx.fillStyle = scrim;
     ctx.fillRect(0, scrimTop, W, H - scrimTop);
   }
 
   // ── Draw headline ──
+  // With a stronger scrim the white copy also gets a soft shadow (light backgrounds)
+  if (k > 1) {
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+    ctx.shadowBlur = s(16);
+  }
   ctx.font = `${brand.typography.headingWeight} ${headingResult.fontSize}px ${headingFont}`;
   const y = drawHeadlineLines(
     ctx, headingResult.lines, headingResult.fontSize,
@@ -365,6 +361,8 @@ async function renderFotoOverlay(canvas, ctx, brand, adData, options, W, H) {
     currentY = drawSubtext(ctx, brand, adData.subtext, padding, currentY, subSize, '#FFFFFF', contentWidth);
     currentY += s(8);
   }
+  ctx.shadowColor = 'transparent';
+  ctx.shadowBlur = 0;
 
   // CTA
   if (adData.cta_text) {
@@ -440,7 +438,8 @@ async function renderFotoSplit(canvas, ctx, brand, adData, options, W, H) {
     }
   } else {
     // ── Portrait / Square: text top, photo bottom ──
-    const splitY = Math.round(H * 0.55);
+    // Brands can give the photo more room (e.g. PAZ: the child is the hero)
+    const splitY = Math.round(H * (brand.layout.splitRatio ?? 0.55));
     const photoHeight = H - splitY;
 
     // Top — white
@@ -501,7 +500,7 @@ const TEMPLATES = {
 
 export const TEMPLATE_LABELS = {
   'bold-text': { name: 'Bold Text', description: 'Grote headline, witte achtergrond, kleurband onderaan' },
-  'foto-overlay': { name: 'Foto Overlay', description: 'Foto als achtergrond, donkere overlay, witte tekst' },
+  'foto-overlay': { name: 'Foto Overlay', description: 'Foto als achtergrond, witte tekst op donker verloop onderaan' },
   'foto-split': { name: 'Foto Split', description: 'Headline boven, foto onderaan' },
   'statement': { name: 'Statement', description: 'Vol vlak merkkleur, losse tekstblokken, pijl, geen knop of logo' },
   'flat-statement': { name: 'Flat Statement', description: 'Vol vlak merkkleur, kop + linkregel, wordmark, geen knop' },

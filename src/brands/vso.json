@@ -1,0 +1,52 @@
+{
+  "id": "vso",
+  "name": "VSO Nederland",
+  "colors": {
+    "primary": "#ae0075",
+    "primaryDeep": "#592549",
+    "accent1": "#23ade0",
+    "accent2": "#ef7d00",
+    "accent3": "#eaedef",
+    "accent4": "#105772",
+    "cta": "#23ade0",
+    "text": "#000000",
+    "textLight": "#FFFFFF",
+    "headingColor": "#000000"
+  },
+  "typography": {
+    "headingFont": "Museo Sans",
+    "headingFallback": "'museo-sans', 'Museo Sans', 'Nunito Sans', Arial, sans-serif",
+    "headingWeight": "700",
+    "bodyFont": "Museo Sans",
+    "bodyFallback": "'museo-sans', 'Museo Sans', 'Nunito Sans', Arial, sans-serif",
+    "bodyWeight": "300",
+    "ctaFont": "Museo Sans",
+    "ctaFallback": "'museo-sans', 'Museo Sans', 'Nunito Sans', Arial, sans-serif",
+    "ctaWeight": "700"
+  },
+  "logo": {
+    "url": "/brands/vso/logo.png",
+    "urlWhite": "/brands/vso/logo-white.png",
+    "position": "top-left",
+    "maxHeight": 80
+  },
+  "layout": {
+    "headingMaxLines": 4,
+    "headingFontSizeRange": [32, 68],
+    "ctaStyle": "button",
+    "padding": 48
+  },
+  "templates": ["bold-text", "foto-overlay", "foto-split"],
+  "rules": [
+    "Kleuren afgeleid uit de stylesheet van vso.nl (thema gopublic-motor-theme-child, app.css) — niet tegen een officiële brandguide geverifieerd",
+    "Magenta #ae0075 is de hoofdkleur: links, primaire knoppen en accenten; donkerpaars #592549 is de diepe variant (footer-CTA, donkere knop)",
+    "Doneer-knop op de site is helderblauw #23ade0 met witte tekst — daarom is blauw hier de cta-kleur",
+    "Oranje #ef7d00 is op de site een steunkleur voor info-vlakken en de donatiewidget, spaarzaam gebruiken",
+    "Koppen zwart en vet (700), lopende tekst licht (300)",
+    "Font is Museo Sans via Adobe Fonts (kit van VSO). Niet vrij beschikbaar: zonder lokaal geactiveerde Museo Sans valt de creator terug op Nunito Sans",
+    "Knoppen op de site zijn recht (border-radius 0); de creator tekent standaard een lichte afronding",
+    "Logo is het transparante bestand van actie.vso.nl (433x347 px); de boog in het logo is paars #92077e, net iets donkerder dan het web-magenta #ae0075",
+    "Foto petitie vrouwenrechten staat in public/photos/vso/ (Aasha Chaudhary, Dhangadi, Nepal — VSO ACTIVE-project)",
+    "Witte logovariant is zelf afgeleid (letters wit, magenta boog behouden): alleen op foto of donkerpaars, niet op een magenta vlak want dan valt de boog weg"
+  ]
+}
