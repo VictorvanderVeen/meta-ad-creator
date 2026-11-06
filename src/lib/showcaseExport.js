@@ -1,58 +1,60 @@
 import { SCALE } from './constants';
 
+export const SHOWCASE_URL = 'https://db.vdveen.online/showcase';
+
 /**
- * Publishes a batch to the meta-ad-showcase project (client approval site),
- * into public/ads/<slug>/ — see the publish-to-showcase plugin in
- * vite.config.js. Only works on the local dev server.
+ * Publishes a batch to the client approval site (meta-ad-showcase), straight
+ * into PocketBase via the dev server, see showcase-pocketbase.js. Live as soon
+ * as it's written. A new campaign is not yet in the client's campaign list;
+ * showInClientList() puts it there.
  *
  * @param {object} brand
  * @param {Array<{ canvas: HTMLCanvasElement, filename: string, name: string }>} items
  * @param {{ id: string, ratio: string }} format
  * @param {{ campaign?: string, copy?: object }} [options] campaign gives the
- *   batch its own folder and link; copy is the Meta copy shown with the ads.
+ *   batch its own link; copy is the Meta copy shown with the ads.
  */
 export async function publishToShowcase(brand, items, format, { campaign = '', copy = null } = {}) {
   const client = brand.showcaseSlug || brand.id;
   const campaignSlug = normalizeSlug(campaign);
   const idPrefix = campaignSlug ? `${client}-${campaignSlug}` : client;
-  const query = `client=${encodeURIComponent(client)}${campaignSlug ? `&campaign=${encodeURIComponent(campaignSlug)}` : ''}`;
-  const ads = [];
 
+  const target = await post(
+    '/__showcase/campaign',
+    JSON.stringify({ client, clientName: brand.name, campaign: campaignSlug, campaignName: campaign || undefined, copy }),
+    'application/json'
+  );
+
+  let replaced = 0;
   for (const { canvas, filename, name } of items) {
-    // The format goes into the file name so 1:1 and 9:16 versions of the same
-    // ad can sit side by side in one client folder.
+    // The format goes into the id so 1:1 and 9:16 versions of the same ad sit side by side.
     const base = filename.replace(/\.png$/, '');
-    const file = `${base}-${format.id}.jpg`;
-    const blob = await toShowcaseJpeg(canvas);
-    await post(`/__showcase/ad?${query}&file=${encodeURIComponent(file)}`, blob, 'image/jpeg');
-    ads.push({
-      id: `${idPrefix}-${base}-${format.id}`.toLowerCase(),
-      file,
-      name,
+    const params = new URLSearchParams({
+      campaignId: target.id,
+      // Only a-z, 0-9, '.', '_' and '-': spaces or accents in a file name would make the id invalid.
+      // Ids that were valid already stay exactly the same, so existing approvals keep matching.
+      id: `${idPrefix}-${base}-${format.id}`.toLowerCase().replace(/[^a-z0-9._-]+/g, '-'),
+      name: name || '',
       format: format.ratio,
       brand: brand.name,
     });
+    const result = await post(`/__showcase/ad?${params}`, await toShowcaseJpeg(canvas), 'image/jpeg');
+    if (result.replaced) replaced += 1;
   }
 
-  const result = await post(
-    `/__showcase/manifest?${query}`,
-    JSON.stringify({ clientName: brand.name, campaignName: campaign || undefined, ads, copy }),
-    'application/json'
-  );
-  return { slug: showcaseSlug(brand, campaign), added: ads.length, total: result.total, dir: result.dir };
+  return {
+    campaignId: target.id,
+    created: target.created,
+    listed: target.listed,
+    url: `${SHOWCASE_URL}/${target.link}/`,
+    added: items.length - replaced,
+    replaced,
+  };
 }
 
-/**
- * Commits and pushes public/ads in the showcase repo — its GitHub Action
- * then builds and deploys. Separate from publishToShowcase() on purpose:
- * that one just writes files locally (fast, no deploy per ad); this is the
- * one deliberate "go live" step, so a work-in-progress batch never ships by
- * accident.
- *
- * @returns {Promise<{ pushed: boolean, commit?: string, scopes?: string[] }>}
- */
-export async function publishLive() {
-  return post('/__showcase/publish', null, 'application/json');
+/** Puts a campaign in the client's campaign list (in_lijst = on). */
+export function showInClientList(campaignId) {
+  return post(`/__showcase/show?campaignId=${encodeURIComponent(campaignId)}`, null, 'application/json');
 }
 
 function normalizeSlug(value) {

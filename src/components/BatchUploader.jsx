@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { parseCSV, parseCSVFile, parseMetaCopy } from '../lib/csvParser';
 import { exportAsZip } from '../lib/zipExport';
-import { publishToShowcase, publishLive, showcaseSlug } from '../lib/showcaseExport';
+import { publishToShowcase, showInClientList, showcaseSlug, SHOWCASE_URL } from '../lib/showcaseExport';
 import { getTemplateList, TEMPLATE_LABELS } from '../lib/canvasRenderer';
 import { getAllFormats, getFormat } from '../lib/formats';
 import { HAMLIN_TEMPLATES, getDefaultLabelPosition } from '../brands/hamlin/shared';
@@ -33,6 +33,8 @@ export default function BatchUploader({ brand }) {
   const [showcaseNotice, setShowcaseNotice] = useState(null); // { text, ok }
   const [publishNotice, setPublishNotice] = useState(null); // { text, ok }
   const [publishing, setPublishing] = useState(false);
+  // The campaign of the last "Zet in showcase" while it's not yet in the client's list.
+  const [unlistedCampaign, setUnlistedCampaign] = useState(null); // { id, url }
   const [showcaseCampaign, setShowcaseCampaign] = useState('');
   const [metaCopyText, setMetaCopyText] = useState('');
   const [metaCta, setMetaCta] = useState(META_CTAS[0]);
@@ -116,31 +118,42 @@ export default function BatchUploader({ brand }) {
   const handlePublishToShowcase = async () => {
     const items = buildExportItems();
     if (items.length === 0) return;
+    setPublishing(true);
+    setPublishNotice(null);
     setShowcaseNotice({ text: 'Bezig met wegschrijven naar de showcase…', ok: true });
     try {
       const result = await publishToShowcase(brand, items, getFormat(batchFormat), {
         campaign: showcaseCampaign,
         copy: metaCopy,
       });
+      const parts = [
+        result.added && `${result.added} nieuw`,
+        result.replaced && `${result.replaced} vervangen`,
+      ].filter(Boolean);
+      const isCampaign = showcaseSlug(brand, showcaseCampaign).includes('/');
+      setUnlistedCampaign(isCampaign && !result.listed ? { id: result.campaignId, url: result.url } : null);
       setShowcaseNotice({
         ok: true,
-        text: `${result.added} advertentie${result.added !== 1 ? 's' : ''} in de showcase gezet${metaCopy ? ' met de Meta-teksten' : ''} (map ${result.slug}, nu ${result.total} in totaal). Nog niet live: dat gebeurt pas na een push van meta-ad-showcase.`,
+        url: result.url,
+        text:
+          `Staat in de showcase (${parts.join(', ')})${metaCopy ? ', met de Meta-teksten' : ''}. ` +
+          (isCampaign && !result.listed
+            ? 'Bekijk hem via de link; de klant ziet hem pas in de campagnelijst na "Zet in klantlijst".'
+            : 'Direct zichtbaar voor de klant.'),
       });
     } catch (err) {
       setShowcaseNotice({ text: `Niet gelukt: ${err.message}`, ok: false });
+    } finally {
+      setPublishing(false);
     }
   };
 
-  const handlePublishLive = async () => {
+  const handleShowInClientList = async () => {
     setPublishing(true);
-    setPublishNotice({ text: 'Bezig met committen en pushen…', ok: true });
     try {
-      const result = await publishLive();
-      setPublishNotice(
-        result.pushed
-          ? { ok: true, text: `Live gezet (${result.commit}): ${result.scopes.join(', ')}. De showcase bouwt en deployt nu automatisch, dat duurt nog ~1-2 minuten.` }
-          : { ok: true, text: 'Niets te pushen, alles staat al live.' }
-      );
+      await showInClientList(unlistedCampaign.id);
+      setPublishNotice({ ok: true, text: 'De campagne staat nu in de campagnelijst van de klant.' });
+      setUnlistedCampaign(null);
     } catch (err) {
       setPublishNotice({ text: `Niet gelukt: ${err.message}`, ok: false });
     } finally {
@@ -374,7 +387,7 @@ export default function BatchUploader({ brand }) {
                   onChange={(e) => setShowcaseCampaign(e.target.value)}
                   placeholder="bijv. P2601CHFN"
                 />
-                <small>Link: …/meta-ad-showcase/{showcaseSlug(brand, showcaseCampaign)}/</small>
+                <small>Link: {SHOWCASE_URL}/{showcaseSlug(brand, showcaseCampaign)}/</small>
               </div>
 
               <div className="form-group">
@@ -415,19 +428,24 @@ export default function BatchUploader({ brand }) {
             <h3>{rowsWithSettings.length} advertentie{rowsWithSettings.length !== 1 ? 's' : ''}</h3>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
               {import.meta.env.DEV && (
-                <button className="btn-secondary" style={{ marginTop: 0 }} onClick={handlePublishToShowcase}>
-                  Zet in showcase
-                </button>
-              )}
-              {import.meta.env.DEV && (
                 <button
                   className="btn-secondary"
                   style={{ marginTop: 0 }}
-                  onClick={handlePublishLive}
+                  onClick={handlePublishToShowcase}
                   disabled={publishing}
-                  title="Commit + push alles wat in de showcase staat — ook batches van eerder"
                 >
-                  {publishing ? 'Bezig…' : 'Live zetten'}
+                  {publishing ? 'Bezig…' : 'Zet in showcase'}
+                </button>
+              )}
+              {import.meta.env.DEV && unlistedCampaign && (
+                <button
+                  className="btn-secondary"
+                  style={{ marginTop: 0 }}
+                  onClick={handleShowInClientList}
+                  disabled={publishing}
+                  title="Zet deze campagne in de campagnelijst die de klant op zijn eigen link ziet"
+                >
+                  Zet in klantlijst
                 </button>
               )}
               <button className="export-btn" onClick={handleExportAll}>
@@ -442,6 +460,14 @@ export default function BatchUploader({ brand }) {
               style={showcaseNotice.ok ? { background: '#eaf6ec', borderColor: '#b7dfbd', color: '#1e6b2c' } : undefined}
             >
               {showcaseNotice.text}
+              {showcaseNotice.url && (
+                <>
+                  {' '}
+                  <a href={showcaseNotice.url} target="_blank" rel="noreferrer">
+                    {showcaseNotice.url}
+                  </a>
+                </>
+              )}
             </p>
           )}
           {publishNotice && (
