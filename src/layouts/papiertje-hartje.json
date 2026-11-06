@@ -1,0 +1,28 @@
+{
+  "id": "papiertje-hartje",
+  "name": "Papiertje + hartje",
+  "description": "Gedecomposeerd uit de Eithan-ad: handschrift-kop, hartje, gescheurd papiertje, rode pil-knop met pijl",
+  "source": "Canva separate-image-layers, 6-11-2026",
+  "designSize": { "width": 732, "height": 760 },
+  "anchor": { "x": 0, "y": 0.5 },
+  "font": { "family": "Itim", "fallback": "'Itim', 'Comic Sans MS', cursive" },
+  "defaultPhoto": "/layouts/papiertje-hartje/foto-schoon.png",
+  "layers": [
+    { "type": "sticker", "id": "hartje", "src": "/layouts/papiertje-hartje/hartje.png",
+      "x": 183, "y": 308, "w": 81, "h": 96 },
+    { "type": "text", "field": "headline",
+      "x": 33.8, "y": 46.8, "w": 381.3, "h": 261.3, "rotation": -7.82,
+      "fontSize": 66.2, "minFontSize": 40, "lineHeight": 0.93, "color": "#070709", "valign": "top" },
+    { "type": "sticker", "id": "papiertje", "src": "/layouts/papiertje-hartje/papiertje.png",
+      "x": 0, "y": 391, "w": 332, "h": 191 },
+    { "type": "text", "field": "subtext",
+      "x": 44.7, "y": 418.6, "w": 251.6, "h": 122.8, "rotation": -6.24,
+      "fontSize": 37.1, "minFontSize": 24, "lineHeight": 1.07, "color": "#070709", "valign": "middle" },
+    { "type": "sticker", "id": "knop", "src": "/layouts/papiertje-hartje/knop.png",
+      "x": 11, "y": 570, "w": 378, "h": 143 },
+    { "type": "text", "field": "cta_text",
+      "x": 66.3, "y": 595.6, "w": 240.2, "h": 94.8, "rotation": -2.02,
+      "fontSize": 43.4, "minFontSize": 28, "lineHeight": 1.0, "color": "#ffffff", "valign": "middle",
+      "trailingSticker": { "src": "/layouts/papiertje-hartje/pijl.png", "w": 58, "h": 48, "gap": 6 } }
+  ]
+}

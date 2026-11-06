@@ -17,6 +17,7 @@ import { renderFlatStatement } from '../brands/takecarebnb/templates/flat-statem
 import { renderPhotoHighlight } from '../brands/takecarebnb/templates/photo-highlight';
 import { renderHamlinLabel } from '../brands/hamlin/templates/label';
 import { renderHamlinStempel } from '../brands/hamlin/templates/stempel';
+import { renderLayout, getLayoutTemplates, isLayoutTemplate } from './layoutRenderer';
 
 // ─── Safe zone: keep all text/CTA within these bounds ───
 const SAFE_TOP_PCT = 0.14;    // no content in top 14%
@@ -507,6 +508,8 @@ export const TEMPLATE_LABELS = {
   'photo-highlight': { name: 'Photo Highlight', description: 'Foto als achtergrond, kop met 1 gemarkeerd woord, wordmark' },
   'hamlin-label': { name: 'Label', description: 'Foto beeldvullend, kleurenband boven, oranje label: kop + grote regel (CTA-veld, bv. €40), subtekst wordt niet getoond' },
   'hamlin-stempel': { name: 'Stempel', description: 'Foto beeldvullend, kleurenband boven, oranje stempel met alleen de kop (bv. URGENT)' },
+  // Decomposed layouts (src/layouts/*.json) are available for every brand.
+  ...Object.fromEntries(getLayoutTemplates().map((l) => [l.id, { name: l.name, description: l.description }])),
 };
 
 // Returns the templates available in the UI. When a brand is passed, the
@@ -514,8 +517,9 @@ export const TEMPLATE_LABELS = {
 // brand-specific templates like "statement" only show up for that brand.
 export function getTemplateList(brand) {
   const allIds = Object.keys(TEMPLATES);
-  if (!brand?.templates) return allIds;
-  return allIds.filter((id) => brand.templates.includes(id));
+  const layoutIds = getLayoutTemplates().map((l) => l.id);
+  if (!brand?.templates) return [...allIds, ...layoutIds];
+  return [...allIds.filter((id) => brand.templates.includes(id)), ...layoutIds];
 }
 
 export async function renderAd(canvas, brand, adData, options = {}) {
@@ -529,7 +533,9 @@ export async function renderAd(canvas, brand, adData, options = {}) {
   canvas.height = H;
 
   const templateId = adData.template || 'bold-text';
-  const renderFn = TEMPLATES[templateId] || renderBoldText;
+  const renderFn = isLayoutTemplate(templateId)
+    ? renderLayout
+    : TEMPLATES[templateId] || renderBoldText;
 
   await renderFn(canvas, ctx, brand, adData, options, W, H);
 

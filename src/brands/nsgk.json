@@ -15,6 +15,7 @@
     "headingColor": "#000000"
   },
   "typography": {
+    "strict": true,
     "headingFont": "Rubik",
     "headingFallback": "'Rubik', 'Helvetica Neue', Arial, sans-serif",
     "headingWeight": "700",

@@ -4,6 +4,7 @@ import FeedPreview from './FeedPreview';
 import ExportButton from './ExportButton';
 import { getTemplateList, TEMPLATE_LABELS } from '../lib/canvasRenderer';
 import { getAllFormats } from '../lib/formats';
+import { isLayoutTemplate } from '../lib/layoutRenderer';
 import { HAMLIN_TEMPLATES, getDefaultLabelPosition } from '../brands/hamlin/shared';
 
 export default function AdEditor({ brand }) {
@@ -156,7 +157,7 @@ export default function AdEditor({ brand }) {
           )}
         </div>
 
-        {['foto-overlay', 'foto-split', ...HAMLIN_TEMPLATES].includes(adData.template) && adData.image_url && (
+        {(['foto-overlay', 'foto-split', ...HAMLIN_TEMPLATES].includes(adData.template) || isLayoutTemplate(adData.template)) && adData.image_url && (
           <div className="form-group">
             <label htmlFor="image_position_x">Foto positie horizontaal</label>
             <input
