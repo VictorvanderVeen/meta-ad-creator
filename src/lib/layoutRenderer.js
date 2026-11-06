@@ -137,7 +137,14 @@ export async function renderLayout(canvas, ctx, brand, adData, options, W, H) {
   for (const layer of layout.layers) {
     if (layer.type === 'sticker') {
       const img = await tryLoadImage(layer.src);
-      if (img) ctx.drawImage(img, ox + layer.x * k, oy + layer.y * k, layer.w * k, layer.h * k);
+      if (!img) continue;
+      const w = layer.w * k;
+      const h = layer.h * k;
+      ctx.save();
+      ctx.translate(ox + layer.x * k + w / 2, oy + layer.y * k + h / 2);
+      ctx.rotate(((layer.rotation || 0) * Math.PI) / 180);
+      ctx.drawImage(img, -w / 2, -h / 2, w, h);
+      ctx.restore();
     } else if (layer.type === 'text') {
       await drawTextLayer(ctx, layer, adData[layer.field], k, ox, oy, fonts[FIELD_ROLE[layer.field] || 'body']);
     }
