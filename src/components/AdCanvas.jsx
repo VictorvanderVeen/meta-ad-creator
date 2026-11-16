@@ -20,6 +20,13 @@ export default function AdCanvas({ brand, adData, onCanvasReady, maxWidth = 540 
 
     async function draw() {
       await document.fonts.ready;
+      // fonts.ready dekt geen fonts die nog geen DOM-element gebruikt: merkfonts expliciet laden.
+      const t = brand.typography || {};
+      await Promise.all([
+        [t.headingWeight, t.headingFallback],
+        [t.bodyWeight, t.bodyFallback],
+        [t.ctaWeight, t.ctaFallback],
+      ].filter(([, f]) => f).map(([w, f]) => document.fonts.load(`${w || 400} 40px ${f}`).catch(() => null)));
 
       // Logo wordt bewust nooit meegerenderd: die staat al op het Meta-account zelf.
       const logoImage = null;

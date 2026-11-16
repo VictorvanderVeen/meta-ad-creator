@@ -15,13 +15,13 @@
   },
   "typography": {
     "headingFont": "Caecilia 85 Heavy",
-    "headingFallback": "'Roboto Slab', Georgia, serif",
-    "headingWeight": "800",
+    "headingFallback": "'Enriqueta', Georgia, serif",
+    "headingWeight": "700",
     "bodyFont": "Caecilia 55 Roman",
-    "bodyFallback": "'Roboto Slab', Georgia, serif",
+    "bodyFallback": "'Enriqueta', Georgia, serif",
     "bodyWeight": "400",
     "ctaFont": "Caecilia 85 Heavy",
-    "ctaFallback": "'Roboto Slab', Georgia, serif",
+    "ctaFallback": "'Enriqueta', Georgia, serif",
     "ctaWeight": "700"
   },
   "logo": {
@@ -41,7 +41,7 @@
     "Kernkleuren (brandbook p.46, bevestigd tegen p.34 CMYK-logo): blauw #004996, rood #FD354E, geel #FED52A, zwart #282828, zandwit #f6f0da (achtergrondtint)",
     "Op de live site (stjosefs.de) staat de kop wit-bold op een blauw vlak, met daaronder een los rood CTA-blok met wit chevron-teken '»' vóór de knoptekst (bv. '» Sie können etwas dagegen tun') — dit is het canonieke foto-overlay-patroon voor deze klant",
     "Logo altijd met gekartelde/zig-zag rand tonen (postzegel-look), linksboven; logo nooit wit/knocked-out weergeven — op donkere achtergrond het zwarte logo gebruiken (brandbook p.34, p.42)",
-    "Caecilia (kop + body) en Bradley Hand Bold (handgeschreven accenten) zijn de officiële fonts (brandbook p.46), maar niet vrij als webfont beschikbaar — vervangen door Roboto Slab als vergelijkbare slab-serif fallback",
+    "Caecilia (kop + body) en Bradley Hand Bold (handgeschreven accenten) zijn de officiële fonts (brandbook p.46), maar niet vrij als webfont beschikbaar — vervangen door Enriqueta (Google Font, slab-serif dicht bij Caecilia; voorgeschreven in briefing Z2608SJD, 16-11-2026)",
     "Woordkeuze positief/kleurrijk: colorful, proud, safe, secure, respect, empowerment, caring, protective, transformational, lifechanging, future — tegenover donker/grijs: dark, afraid, unsafe, disadvantaged, gray (brandbook p.30)",
     "Lakota-waarden voor verdieping in copy: dignity, respect, wisdom, kinship, warmth, growth, fortitude, generosity, faith, pride, kindness (brandbook p.30)",
     "Kernpropositie: 'St. Joseph's Indian School colors the lives of disadvantaged Lakota children' — contrast cycle of poverty (grijs/donker beeld) versus colorful opportunities (kleurrijk beeld) (brandbook p.12-19)",
