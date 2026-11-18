@@ -113,6 +113,8 @@ async function drawTextLayer(ctx, layer, text, k, ox, oy, font) {
     }
   }
   ctx.restore();
+  // Bottom of the drawn text in design units, for layers that stack below it.
+  return layer.y + (-boxH / 2 + (layer.valign === 'middle' ? (boxH - textH) / 2 : 0) + textH + boxH / 2) / k;
 }
 
 export async function renderLayout(canvas, ctx, brand, adData, options, W, H) {
@@ -134,6 +136,7 @@ export async function renderLayout(canvas, ctx, brand, adData, options, W, H) {
   const ox = (W - dw * k) * (layout.anchor?.x ?? 0.5);
   const oy = (H - dh * k) * (layout.anchor?.y ?? 0.5);
 
+  const bottoms = {};
   for (const layer of layout.layers) {
     if (layer.type === 'sticker') {
       const img = await tryLoadImage(layer.src);
@@ -146,7 +149,13 @@ export async function renderLayout(canvas, ctx, brand, adData, options, W, H) {
       ctx.drawImage(img, -w / 2, -h / 2, w, h);
       ctx.restore();
     } else if (layer.type === 'text') {
-      await drawTextLayer(ctx, layer, adData[layer.field], k, ox, oy, fonts[FIELD_ROLE[layer.field] || 'body']);
+      // "below": { "field": "headline", "gap": 22 } stacks this box directly
+      // under that field's actual text, so a shorter or longer headline
+      // never leaves a gap or overlaps.
+      const anchorBottom = layer.below && bottoms[layer.below.field];
+      const placed = anchorBottom != null ? { ...layer, y: anchorBottom + (layer.below.gap ?? 0) } : layer;
+      const bottom = await drawTextLayer(ctx, placed, adData[layer.field], k, ox, oy, fonts[FIELD_ROLE[layer.field] || 'body']);
+      if (bottom != null) bottoms[layer.field] = bottom;
     }
   }
 }

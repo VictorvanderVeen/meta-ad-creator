@@ -1,0 +1,94 @@
+{
+  "id": "levon-schoolhek",
+  "name": "Levon schoolhek",
+  "description": "Volle foto, witte kop + subtekst linksboven, lichtjesslinger, rode knop, rolstoel op voorgrond",
+  "source": "Canva separate-image-layers, 2026-11-17",
+  "designSize": {
+    "width": 1122,
+    "height": 1402
+  },
+  "anchor": {
+    "x": 0,
+    "y": 0.5
+  },
+  "font": {
+    "family": "Rubik",
+    "fallback": "'Rubik', 'Helvetica Neue', Arial, sans-serif"
+  },
+  "defaultPhoto": "/layouts/levon-schoolhek/foto.png",
+  "layers": [
+    {
+      "type": "sticker",
+      "id": "sticker-1",
+      "src": "/layouts/levon-schoolhek/sticker-1.png",
+      "x": 0,
+      "y": 683,
+      "w": 605,
+      "h": 719
+    },
+    {
+      "type": "sticker",
+      "id": "sticker-2",
+      "src": "/layouts/levon-schoolhek/sticker-2.png",
+      "x": 0,
+      "y": 455,
+      "w": 1122,
+      "h": 106
+    },
+    {
+      "type": "text",
+      "field": "headline",
+      "sourceText": "Zijn zusje gaat naar \nde school om de hoek. \nLevon niet.",
+      "x": 103.5,
+      "y": 67.9,
+      "w": 854.9,
+      "h": 246.6,
+      "rotation": 0,
+      "fontSize": 82.9,
+      "minFontSize": 49.7,
+      "lineHeight": 0.9,
+      "color": "#fafafa",
+      "valign": "top"
+    },
+    {
+      "type": "text",
+      "field": "subtext",
+      "below": { "field": "headline", "gap": 22 },
+      "sourceText": "Help mee aan een school \ndichtbij, ook voor kinderen zoals Levon.",
+      "x": 106.9,
+      "y": 314.2,
+      "w": 842.6,
+      "h": 150,
+      "rotation": 0,
+      "fontSize": 42.1,
+      "minFontSize": 32,
+      "lineHeight": 1.1,
+      "color": "#fafafa",
+      "valign": "top"
+    },
+    {
+      "type": "sticker",
+      "id": "sticker-3",
+      "src": "/layouts/levon-schoolhek/sticker-3.png",
+      "x": 64,
+      "y": 505,
+      "w": 390,
+      "h": 124
+    },
+    {
+      "type": "text",
+      "field": "cta_text",
+      "sourceText": "Help mee",
+      "x": 137.3,
+      "y": 538.8,
+      "w": 270.5,
+      "h": 70.3,
+      "rotation": 0,
+      "fontSize": 59.7,
+      "minFontSize": 35.8,
+      "lineHeight": 1.1,
+      "color": "#fafafa",
+      "valign": "middle"
+    }
+  ]
+}
