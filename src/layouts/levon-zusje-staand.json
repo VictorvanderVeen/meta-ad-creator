@@ -1,0 +1,88 @@
+{
+  "id": "levon-zusje-staand",
+  "name": "Levon zusje (9:16)",
+  "description": "Staande versie van Levon zusje: tekst onderin op donker verloop, boven de veilige zone.",
+  "source": "Afgeleid van levon-zusje, 2026-11-20",
+  "designSize": {
+    "width": 1122,
+    "height": 1995
+  },
+  "anchor": {
+    "x": 0,
+    "y": 0
+  },
+  "font": {
+    "family": "Rubik",
+    "fallback": "'Rubik', 'Helvetica Neue', Arial, sans-serif"
+  },
+  "defaultPhoto": "/layouts/levon-zusje/foto.jpg",
+  "layers": [
+    {
+      "type": "sticker",
+      "id": "verloop",
+      "src": "/layouts/levon-zusje/verloop.png",
+      "x": 0,
+      "y": 895,
+      "w": 1122,
+      "h": 1100
+    },
+    {
+      "type": "text",
+      "field": "headline",
+      "sourceText": "Zijn zusje gaat naar \nde school om de hoek. \nLevon niet.",
+      "x": 103.5,
+      "y": 1245,
+      "w": 854.9,
+      "h": 246.6,
+      "rotation": 0,
+      "fontSize": 82.9,
+      "minFontSize": 49.7,
+      "lineHeight": 0.9,
+      "color": "#fafafa",
+      "valign": "top"
+    },
+    {
+      "type": "text",
+      "field": "subtext",
+      "below": {
+        "field": "headline",
+        "gap": 22
+      },
+      "sourceText": "Zijn school is ver weg. Zijn vriendjes ook.",
+      "x": 106.9,
+      "y": 1140,
+      "w": 842.6,
+      "h": 60,
+      "rotation": 0,
+      "fontSize": 42.1,
+      "minFontSize": 32,
+      "lineHeight": 1.1,
+      "color": "#fafafa",
+      "valign": "top"
+    },
+    {
+      "type": "sticker",
+      "id": "knop",
+      "src": "/layouts/levon-zusje/knop.png",
+      "x": 64,
+      "y": 1590,
+      "w": 390,
+      "h": 124
+    },
+    {
+      "type": "text",
+      "field": "cta_text",
+      "sourceText": "Help mee",
+      "x": 137.3,
+      "y": 1623.8,
+      "w": 270.5,
+      "h": 70.3,
+      "rotation": 0,
+      "fontSize": 59.7,
+      "minFontSize": 35.8,
+      "lineHeight": 1.1,
+      "color": "#fafafa",
+      "valign": "middle"
+    }
+  ]
+}

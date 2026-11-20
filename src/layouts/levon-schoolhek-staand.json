@@ -1,0 +1,97 @@
+{
+  "id": "levon-schoolhek-staand",
+  "name": "Levon schoolhek (9:16)",
+  "description": "Staande versie van Levon schoolhek: tekst onder de veilige zone, rolstoel op de voorgrond. Gebruik met image_position_x 0.3.",
+  "source": "Afgeleid van levon-schoolhek, 2026-11-20",
+  "designSize": {
+    "width": 1122,
+    "height": 1995
+  },
+  "anchor": {
+    "x": 0,
+    "y": 0
+  },
+  "font": {
+    "family": "Rubik",
+    "fallback": "'Rubik', 'Helvetica Neue', Arial, sans-serif"
+  },
+  "defaultPhoto": "/layouts/levon-schoolhek/foto.png",
+  "layers": [
+    {
+      "type": "sticker",
+      "id": "sticker-1",
+      "src": "/layouts/levon-schoolhek/sticker-1.png",
+      "x": -142.4,
+      "y": 971.9,
+      "w": 860.9,
+      "h": 1023.1
+    },
+    {
+      "type": "sticker",
+      "id": "sticker-2",
+      "src": "/layouts/levon-schoolhek/sticker-2.png",
+      "x": 0,
+      "y": 700,
+      "w": 1122,
+      "h": 106
+    },
+    {
+      "type": "text",
+      "field": "headline",
+      "sourceText": "Zijn zusje gaat naar \nde school om de hoek. \nLevon niet.",
+      "x": 103.5,
+      "y": 290,
+      "w": 854.9,
+      "h": 246.6,
+      "rotation": 0,
+      "fontSize": 82.9,
+      "minFontSize": 49.7,
+      "lineHeight": 0.9,
+      "color": "#fafafa",
+      "valign": "top"
+    },
+    {
+      "type": "text",
+      "field": "subtext",
+      "below": {
+        "field": "headline",
+        "gap": 22
+      },
+      "sourceText": "Help mee aan een school \ndichtbij, ook voor kinderen zoals Levon.",
+      "x": 106.9,
+      "y": 314.2,
+      "w": 842.6,
+      "h": 150,
+      "rotation": 0,
+      "fontSize": 42.1,
+      "minFontSize": 32,
+      "lineHeight": 1.1,
+      "color": "#fafafa",
+      "valign": "top"
+    },
+    {
+      "type": "sticker",
+      "id": "sticker-3",
+      "src": "/layouts/levon-schoolhek/sticker-3.png",
+      "x": 64,
+      "y": 780,
+      "w": 390,
+      "h": 124
+    },
+    {
+      "type": "text",
+      "field": "cta_text",
+      "sourceText": "Help mee",
+      "x": 137.3,
+      "y": 813.8,
+      "w": 270.5,
+      "h": 70.3,
+      "rotation": 0,
+      "fontSize": 59.7,
+      "minFontSize": 35.8,
+      "lineHeight": 1.1,
+      "color": "#fafafa",
+      "valign": "middle"
+    }
+  ]
+}
